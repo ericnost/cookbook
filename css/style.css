@@ -1,0 +1,86 @@
+
+.navbar-default .navbar-toggle:hover {
+  background-color: #493c30;
+}
+.navbar-default .navbar-brand {
+  color: white;
+  font-family: 'Bitter', serif;
+  font-size: 28px;
+  text-align: left;
+  padding:10px;
+}
+.navbar-default .navbar-brand:hover {
+ color: white
+}
+
+.navbar-collapse {
+  background-color: #685544;
+}
+.navbar-header {
+	color:white;
+    background-color: #685544;
+    text-align: left;
+    width: 100%;
+    padding: 20px;
+}	
+
+.pull-right{
+  margin: 5px;
+}
+
+html, body {
+  background: #fff;
+  font-family:'Bitter', serif;
+  margin: 0;
+   padding-top: 50px; 
+}
+.dropdown-toggle{
+  color:white;
+  text-decoration: none
+}
+.btn-default{
+  background-image: none;
+  background-color: #967b62;
+border-radius: 0px;
+}
+label.btn{
+  color:white;
+}
+.panel > .panel-heading {
+    background-image: none;
+}
+.btn-default:hover{
+   background-image: none;
+    background-color:   #493c30;
+    color:white;
+}
+.btn:focus{
+   background-image: none;
+    background-color:   #967b62;
+    color:white;
+}
+.btn-default.active{
+   background-image: none;
+    background-color:   #493c30;
+    color:white;
+}
+.btn-default.active:hover{
+   background-image: none;
+    background-color:   #967b62;
+    color:white;
+}
+.photo h2 {
+  color: #000;
+}
+.photo {
+  color: #445768;
+}
+.photo h6{
+  color: #000;
+}
+.speciality{
+  color: #ccac00;
+}
+br{
+	padding: -5px;
+}

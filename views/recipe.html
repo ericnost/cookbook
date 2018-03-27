@@ -1,0 +1,17 @@
+ 			 	<div class = "col-md-4">
+                <img ng-src="{{ $ctrl.recipe.url }}" style="width: 100%; text-align:center">
+              </div>
+              <div class="col-md-8">
+                <h2 class="photo"> {{$ctrl.recipe.title}}</h2>
+               	<br><span class="photo">From:</span>  {{$ctrl.recipe.author}}<!-- link filter here -->
+               <!--  <p class="photo-views"> {{detail.views | number}}</p>
+                <p class="photo-upvotes"> {{detail.upvotes | number}}</p> -->
+                <br><span class="photo">Where we first made it:</span> {{$ctrl.recipe.location}} 
+                <br><span class="photo">Season:</span> {{$ctrl.recipe.season}} 
+                <br><span class="photo">Meal:</span> {{$ctrl.recipe.meal}}
+                <span ng-show="$ctrl.recipe.speciality" class="speciality"><br>Specialty!</span>
+                <br><img ng-show="$ctrl.recipe.veg" src="data/vegetarian-mark.svg" width="25" height="25" alt="Vegetarian"/>
+                <img ng-show="$ctrl.recipe.vegan" src="data/vegan.svg" width="25" height="25" alt="Vegan"/>
+                <img ng-show="$ctrl.recipe.GF" src="data/gf.png" width="25" height="25" alt="Gluten Free"/>
+                <p><h6 ng-repeat="line in $ctrl.recipe.text track by $index">{{line}}</h6>
+              </div>

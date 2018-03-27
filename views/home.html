@@ -1,0 +1,107 @@
+   <ui-view></ui-view>
+  <script type="text/ng-template" id="group-template.html">
+    <div class="panel-heading" uib-accordion-transclude="heading">
+      <h4 class="panel-title" style="text-align: center;color:white;" >
+        <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()">
+          <span uib-accordion-header  >
+            {{heading}}
+          </span>
+        </a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse" uib-collapse="!isOpen">
+      <div class="panel-body" style="background-color: white">
+        <div class="col-md-12" ng-transclude></div>
+      </div>
+    </div>
+  </script>
+
+<nav class="navbar navbar-default navbar-fixed-top main-navbar"> <!--creates navbar-->
+
+						<div class="navbar-header"> <!--creates the navbar header-->
+								<!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+										<span class="sr-only">Toggle navigation</span>used for screen readers for accessibility
+										<span class="glyphicon glyphicon-menu-hamburger"></span>
+										<span class="menu">Menu</span>
+								</button> hamburger button for smaller devices-->
+								<a class="navbar-brand" ui-sref="main">What We Ate</a><!--our website brand name-->
+						
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="btn-group pull-right">
+						    <label class="btn btn-default" ng-model="$ctrl.checkModel.veg" ng-click="$ctrl.changer('veg')" uib-btn-checkbox>Vegetarian <img src="data/vegetarian-mark.svg" width="25" height="25"/></label>
+						    <label class="btn btn-default" ng-model="$ctrl.checkModel.vegan" ng-click="$ctrl.changer('vegan')" uib-btn-checkbox>Vegan<img src="data/vegan.svg" width="25" height="25"/></label>
+						    <label class="btn btn-default" ng-model="$ctrl.checkModel.gf" ng-click="$ctrl.changer('gf')" uib-btn-checkbox>Gluten free<img src="data/gf.png" width="25" height="25"/></label>
+						</div>
+					    <div class="btn-group pull-right" uib-dropdown is-open="status.isopen2">
+					      <button id="meal" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+					        Filter by meal <span class="caret"></span>
+					      </button>
+					      <ul id="mealUL" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+					        <li role="menuitem"><a href ng-click="searchText2 = 'Breakfast'">Breakfast</a></li>
+					        <li role="menuitem"><a href ng-click="searchText2 = 'Lunch or snack or something'">Lunch or snack or something</a></li>
+					        <li role="menuitem"><a href ng-click="searchText2 = 'Drink'">Drink</a></li>
+					        <li role="menuitem"><a href ng-click="searchText2 = 'Supper'">Supper</a></li>
+					        <li role="menuitem"><a href ng-click="searchText2 = 'Dessert'">Dessert</a></li>
+					        <li role="menuitem"><hr></li>
+					        <li role="menuitem"><a href ng-click="searchText2 = ''">All meals</a></li>
+					      </ul>
+					    </div>
+					     <div class="btn-group pull-right" uib-dropdown is-open="status.isopen1">
+					    	<button id="season" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+					        Filter by season <span class="caret"></span>
+					      </button>
+					      <ul id="seasonUL" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+					        <li role="menuitem"><a href ng-click="searchText1 = 'Fall'">Fall</a></li>
+					        <li role="menuitem"><a href ng-click="searchText1 = 'Winter'">Winter</a></li>
+					        <li role="menuitem"><a href ng-click="searchText1 = 'Spring'">Spring</a></li>
+					        <li role="menuitem"><a href ng-click="searchText1 = 'Summer'">Summer</a></li>
+					        <li role="menuitem"><hr></li>
+					        <li role="menuitem"><a href ng-click="searchText1 = ''">All seasons</a></li>
+					      </ul>
+					    </div>
+					    <label class="pull-right" style="color: white">Search: <input style="color: black" ng-model="searchText"></label>
+					    </div>
+					    
+		</nav><!--end naviga	tion bar-->
+			<div class="container-fluid">
+						
+					   
+				</div>
+ 
+  <div class="container-fluid main">
+  <uib-accordion close-others="true">
+    
+    <div uib-accordion-group class="panel-default"  style="margin: 0 auto" ng-repeat="recipe in $ctrl.data | filter:{'title': searchText, 'season': searchText1, 'meal': searchText2} | filter:$ctrl.filterStuff"   ng-style="{'width':$ctrl.w, 'background-color': recipe.bg}" template-url="group-template.html" > 
+    <uib-accordion-heading >
+      {{recipe.title | uppercase}}
+    </uib-accordion-heading>
+             
+              <div class = "col-md-4">
+                <img ng-src="{{ recipe.url }}" style="width: 100%; text-align:center">
+              </div>
+              <div class="col-md-8">
+
+                <h2 class="photo"> {{recipe.title}}</h2>
+                <p> <a ui-sref="main.recipe({ siteID:recipe.title })" target="_blank">Print/Share</a> 
+               	<p><span class="photo">From:</span>  {{recipe.author}}<!-- link filter here -->
+               <!--  <p class="photo-views"> {{detail.views | number}}</p>
+                <p class="photo-upvotes"> {{detail.upvotes | number}}</p> -->
+                <br><span class="photo">Where we first made it:</span> {{recipe.location}} 
+                <br><span class="photo">Season:</span> {{recipe.season}} 
+                <br><span class="photo">Meal:</span> {{recipe.meal}}
+                <span ng-show="recipe.speciality" class="speciality"><br>Specialty!</span>
+                <br><img ng-show="recipe.veg" src="data/vegetarian-mark.svg" width="25" height="25" alt="Vegetarian"/>
+                <img ng-show="recipe.vegan" src="data/vegan.svg" width="25" height="25" alt="Vegan"/>
+                <img ng-show="recipe.GF" src="data/gf.png" width="25" height="25" alt="Gluten Free"/>
+                <p><h6 ng-repeat="line in recipe.text track by $index">{{line}}</h6>
+              </div>
+                
+           
+      
+    </uib-accordion>
+    <!--<div class="row" ng-repeat="recipe in $ctrl.data  | filter:{'title': searchText, 'season': searchText1, 'meal': searchText2}">  , 'veg': $ctrl.checkModel.veg,'vegan': $ctrl.checkModel.vegan, 'GF':$ctrl.checkModel.gf} 
+     <a ui-sref="main.recipe({siteID: recipe.title})">
+      
+    </a>-->
+  </div>
+
