@@ -32,8 +32,8 @@ app.config(function($stateProvider) {
 app.factory('Resource', function ($http) {
   var service = {
     getRecipes: function() {
-      return GetSheetDone.labeledCols('1Kc39Xqgv1qZmkEx8l_5ESdl1mLU2l5vtbWl7fXhleYA', 1).then(function(resp) {
-        return resp.data;
+      return GetSheetDone.labeledCols('2PACX-1vRiS3jHboXpxEHwjucEM8_uIiHQZtDcixj3SfFSnDh0lRspqUp8wSNhDL2gv7IGv0k4_lpjhz4CV2uH', 1).then(function(resp) {
+        return resp.data; //https://docs.google.com/spreadsheets/d/e//pub?output=csv
       });
     }
   }
